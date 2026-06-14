@@ -1,0 +1,15 @@
+# Fichiers source/reference non necessaires au site publie
+/cocktail avec alcool/
+/cocktail sans alcool/
+/Carte des boissons.xlsx
+/Document numérisé (1).pdf
+/Idée pour la start up.docx
+/Maquette prototype.png
+/IMG_*.jpg
+/carte sans alcool.jpg
+/Logo Taste Buffet.png
+/Logo taste buffet final.png
+
+# Fichiers systeme locaux
+.DS_Store
+Thumbs.db
