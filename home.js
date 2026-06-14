@@ -84,7 +84,7 @@ if ("IntersectionObserver" in window) {
     },
   );
 
-  ["actualite", "restaurant", "menu", "galerie", "avis", "contact"].forEach((id) => {
+  ["actualite", "restaurant", "menu", "carte-boissons", "galerie", "avis", "contact"].forEach((id) => {
     const section = document.getElementById(id);
     if (section) sectionObserver.observe(section);
   });
