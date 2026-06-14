@@ -1178,6 +1178,7 @@ button {
   }
 
   .header-inner {
+    grid-template-columns: auto 1fr auto;
     gap: 12px;
   }
 
@@ -1187,6 +1188,11 @@ button {
 
   .header-reserve {
     display: none;
+  }
+
+  .menu-toggle {
+    grid-column: 3;
+    justify-self: end;
   }
 
   .hero h1 {
@@ -1276,7 +1282,9 @@ button {
   }
 
   .drinks-showcase {
-    min-height: 460px;
+    min-height: 620px;
+    padding: 88px 18px 124px;
+    background-position: center;
   }
 
   .drinks-showcase-content p {
@@ -1390,14 +1398,16 @@ button {
 
 @media (max-width: 430px) {
   .header-inner {
-    padding-inline: 12px;
+    padding-inline: 16px;
   }
 
   .brand {
-    width: min(62vw, 210px);
+    justify-self: start;
+    width: min(58vw, 210px);
   }
 
   .menu-toggle {
+    justify-self: end;
     width: 44px;
     height: 44px;
   }
@@ -1420,7 +1430,8 @@ button {
   }
 
   .drinks-showcase {
-    min-height: 390px;
+    min-height: 560px;
+    padding: 78px 18px 110px;
   }
 
   .drinks-showcase-content p {
