@@ -3,63 +3,422 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Carte des boissons</title>
+    <meta
+      name="description"
+      content="Taste and Buffet, restaurant asiatique avec buffet &agrave; volont&eacute;, sushis, grillades, wok, plancha, boissons et cocktails &agrave; Saint-Pierre-du-Mont."
+    />
+    <title>Taste and Buffet | Restaurant asiatique - Buffet &agrave; volont&eacute;</title>
+    <link rel="icon" href="data:," />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header class="site-header" id="accueil">
-      <div class="topbar">
-        <div class="logo-container">
-          <a class="brand-logo" href="#accueil" aria-label="Taste Buffet - Accueil">
-            <img
-              src="images/logo-taste-buffet-sans-fond.png"
-              alt="Taste Buffet - Restaurant asiatique"
-            />
-          </a>
-        </div>
+    <header class="site-header" data-site-header>
+      <a class="skip-link" href="#contenu">Aller au contenu</a>
+      <div class="header-inner">
+        <a class="brand" href="#accueil" aria-label="Taste and Buffet - Accueil">
+          <img
+            src="images/logo-taste-buffet-header-blanc.png"
+            alt="Taste and Buffet"
+            width="2172"
+            height="724"
+          />
+        </a>
 
-        <div class="topbar-actions">
-          <nav class="primary-nav" aria-label="Navigation principale">
-            <a href="#accueil">Accueil</a>
-            <a class="active" href="#notre-carte">Notre carte</a>
-            <a href="#a-propos">À propos</a>
-            <a href="#reservation">Réservation</a>
-            <a href="#contact">Contact</a>
-          </nav>
+        <nav class="desktop-nav" aria-label="Navigation principale">
+          <a href="#actualite">Actualit&eacute;</a>
+          <a href="#restaurant">Le Restaurant</a>
+          <a href="#menu">Menu</a>
+          <a href="carte-des-boissons.html">Carte des boissons</a>
+          <a href="#galerie">Galerie Photos</a>
+          <a href="#avis">Avis Clients</a>
+          <a href="#contact">Acc&egrave;s &amp; Contact</a>
+        </nav>
 
-          <a class="reserve-link" href="#reservation">Réserver une table</a>
-        </div>
+        <a class="header-reserve" href="#reservation">R&eacute;server une table</a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Ouvrir le menu"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+          data-menu-toggle
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
 
-      <div class="header-content">
-        <p class="eyebrow">Restaurant</p>
-        <h1>Carte des boissons</h1>
-        <p class="intro">
-          Cocktails, apéritifs et bières pour accompagner votre moment.
-        </p>
+      <div class="mobile-menu" id="mobileMenu" aria-hidden="true" inert data-mobile-menu>
+        <nav aria-label="Navigation mobile">
+          <a href="#actualite">Actualit&eacute;</a>
+          <a href="#restaurant">Le Restaurant</a>
+          <a href="#menu">Menu</a>
+          <a href="carte-des-boissons.html">Carte des boissons</a>
+          <a href="#galerie">Galerie Photos</a>
+          <a href="#avis">Avis Clients</a>
+          <a href="#contact">Acc&egrave;s &amp; Contact</a>
+          <a class="mobile-reserve" href="#reservation">R&eacute;server une table</a>
+        </nav>
       </div>
     </header>
 
-    <nav class="category-nav" aria-label="Catégories de boissons">
-      <div class="nav-scroll" id="categoryNav"></div>
-    </nav>
+    <main id="contenu">
+      <section class="hero" id="accueil" aria-label="Accueil">
+        <img
+          class="hero-image"
+          src="images/devanture ok 2.png"
+          alt="Devanture du restaurant Taste and Buffet"
+          width="1609"
+          height="905"
+          fetchpriority="high"
+        />
+        <div class="hero-overlay"></div>
+        <div class="hero-content reveal">
+          <p class="section-kicker">Saint-Pierre-du-Mont</p>
+          <h1>Taste and Buffet</h1>
+          <p>Restaurant asiatique &ndash; Buffet &agrave; volont&eacute;</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#restaurant">D&eacute;couvrir le restaurant</a>
+            <a class="button button-ghost" href="#menu">Voir nos tarifs</a>
+            <a class="button button-light" href="#reservation">R&eacute;server une table</a>
+          </div>
+        </div>
+        <a class="scroll-cue" href="#actualite" aria-label="Descendre dans la page">
+          <span></span>
+        </a>
+      </section>
 
-    <main class="menu-wrapper" id="notre-carte">
-      <div id="menu"></div>
+      <section class="section section-news" id="actualite">
+        <div class="section-inner narrow reveal">
+          <p class="section-kicker">Actualit&eacute;</p>
+          <h2>Les informations du moment</h2>
+          <div class="title-line"></div>
+          <article class="news-panel">
+            <p class="news-label">Actualit&eacute; &agrave; renseigner</p>
+            <h3>Aucune annonce publi&eacute;e pour le moment</h3>
+            <p>
+              Cet espace est pr&eacute;vu pour afficher une nouveaut&eacute;, une information importante,
+              une offre temporaire, un &eacute;v&eacute;nement ou une fermeture exceptionnelle.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-restaurant" id="restaurant">
+        <div class="split-section reveal">
+          <div class="split-media image-zoom">
+            <img
+              src="images/fruit ok.png"
+              alt="Buffet de fruits et confiseries"
+              width="1672"
+              height="941"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="split-copy">
+            <p class="section-kicker">Le Restaurant</p>
+            <h2>Un buffet asiatique g&eacute;n&eacute;reux et chaleureux</h2>
+            <div class="title-line"></div>
+            <p>
+              Taste and Buffet accueille les amateurs de cuisine asiatique autour d'un buffet
+              &agrave; volont&eacute;, avec sushis, grillades, wok, plancha, desserts et boissons.
+            </p>
+            <a class="button button-primary" href="#menu">Voir nos tarifs</a>
+          </div>
+        </div>
+
+        <div class="split-section split-section-reverse reveal">
+          <div class="split-media image-zoom">
+            <img
+              src="images/plat buffet chaud ok.png"
+              alt="Plats chauds du buffet"
+              width="1672"
+              height="941"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="split-copy">
+            <p class="section-kicker">Buffet, wok &amp; plancha</p>
+            <h2>Des espaces gourmands pour composer son moment</h2>
+            <div class="title-line"></div>
+            <p>
+              Le site met en avant l'univers du restaurant sans inventer d'informations
+              pratiques non fournies. Les horaires et services d&eacute;taill&eacute;s pourront &ecirc;tre
+              ajout&eacute;s d&egrave;s qu'ils seront confirm&eacute;s.
+            </p>
+            <a class="button button-ghost-dark" href="carte-des-boissons.html">Carte des boissons</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-menu" id="menu">
+        <div class="section-inner reveal">
+          <p class="section-kicker">Menu</p>
+          <h2>Nos Buffets</h2>
+          <div class="title-line"></div>
+          <div class="pricing-board">
+            <div class="pricing-column">
+              <h3>Tarifs adultes</h3>
+              <div class="price-row">
+                <span>Du lundi au samedi</span>
+                <span>Midi</span>
+                <strong>18,90 &euro;</strong>
+              </div>
+              <div class="price-row">
+                <span>Jours f&eacute;ri&eacute;s et dimanche</span>
+                <span>Midi</span>
+                <strong>25,90 &euro;</strong>
+              </div>
+              <div class="price-row">
+                <span>Du dimanche au jeudi</span>
+                <span>Soir</span>
+                <strong>25,90 &euro;</strong>
+              </div>
+              <div class="price-row">
+                <span>Le vendredi et le samedi</span>
+                <span>Soir</span>
+                <strong>25,90 &euro;</strong>
+              </div>
+            </div>
+
+            <div class="pricing-column">
+              <h3>Tarifs enfants</h3>
+              <div class="price-row price-row-simple">
+                <span>Enfant de moins de 5 ans</span>
+                <strong>5,00 &euro;</strong>
+              </div>
+              <div class="price-row price-row-simple">
+                <span>Enfant de 5 &agrave; 8 ans</span>
+                <strong>11,90 &euro;</strong>
+              </div>
+              <div class="price-row">
+                <span>Enfant de 9 &agrave; 10 ans</span>
+                <span>Midi</span>
+                <strong>13,90 &euro;</strong>
+              </div>
+              <div class="price-row">
+                <span>Enfant de 9 &agrave; 10 ans</span>
+                <span>Soir et dimanche</span>
+                <strong>16,90 &euro;</strong>
+              </div>
+            </div>
+
+            <p class="birthday-note">Une boisson offerte pour votre anniversaire &#127880;</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-drinks">
+        <div class="section-inner drinks-cta reveal">
+          <div>
+            <p class="section-kicker">Boissons &amp; cocktails</p>
+            <h2>La carte des boissons reste disponible</h2>
+            <p>
+              Cocktails avec ou sans alcool, ap&eacute;ritifs, bi&egrave;res, vins, champagnes,
+              digestifs et boissons chaudes sont pr&eacute;sent&eacute;s dans la carte existante.
+            </p>
+          </div>
+          <a class="button button-primary" href="carte-des-boissons.html">Carte des boissons</a>
+        </div>
+      </section>
+
+      <section class="section section-gallery" id="galerie">
+        <div class="section-inner reveal">
+          <p class="section-kicker">Galerie Photos</p>
+          <h2>Un aper&ccedil;u du buffet</h2>
+          <div class="title-line"></div>
+          <p class="section-intro">
+            Fruits, desserts, entr&eacute;es, plats chauds et sushis : quelques images de l'univers
+            Taste and Buffet.
+          </p>
+
+          <div class="gallery-grid" data-gallery>
+            <button class="gallery-item gallery-large" type="button" data-gallery-index="0">
+              <img src="images/fruit ok.png" alt="Buffet de fruits et confiseries" width="1672" height="941" loading="lazy" decoding="async" />
+            </button>
+            <button class="gallery-item gallery-wide" type="button" data-gallery-index="1">
+              <img src="images/dessert ok.png" alt="Buffet de desserts et p&acirc;tisseries" width="1672" height="941" loading="lazy" decoding="async" />
+            </button>
+            <button class="gallery-item" type="button" data-gallery-index="2">
+              <img src="images/dessert maison ok.png" alt="Desserts individuels" width="1672" height="941" loading="lazy" decoding="async" />
+            </button>
+            <button class="gallery-item" type="button" data-gallery-index="3">
+              <img src="images/charcuterie ok.png" alt="Charcuteries, fromages et entr&eacute;es" width="1672" height="941" loading="lazy" decoding="async" />
+            </button>
+            <button class="gallery-item gallery-wide" type="button" data-gallery-index="4">
+              <img src="images/plat buffet chaud ok.png" alt="Plats chauds du buffet" width="1672" height="941" loading="lazy" decoding="async" />
+            </button>
+            <button class="gallery-item gallery-small" type="button" data-gallery-index="5">
+              <img src="images/sushi.jpg" alt="S&eacute;lection de sushis" width="222" height="185" loading="lazy" decoding="async" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-reviews" id="avis">
+        <div class="section-inner reveal">
+          <p class="section-kicker">Avis Clients</p>
+          <h2>Ils parlent de leur exp&eacute;rience</h2>
+          <div class="title-line"></div>
+
+          <div class="reviews-shell" data-reviews>
+            <button class="round-control" type="button" aria-label="Avis pr&eacute;c&eacute;dent" data-review-prev>&lsaquo;</button>
+            <div class="reviews-viewport" tabindex="0">
+              <article class="review-card is-active">
+                <p class="review-status">Avis client &agrave; int&eacute;grer</p>
+                <p>
+                  Espace r&eacute;serv&eacute; &agrave; un avis r&eacute;el du restaurant. Remplacer ce contenu lorsque
+                  les avis valid&eacute;s seront disponibles.
+                </p>
+              </article>
+              <article class="review-card">
+                <p class="review-status">Avis client &agrave; int&eacute;grer</p>
+                <p>
+                  Cette carte garde la mise en page du carrousel sans afficher de faux avis
+                  comme s'ils &eacute;taient authentiques.
+                </p>
+              </article>
+              <article class="review-card">
+                <p class="review-status">Avis client &agrave; int&eacute;grer</p>
+                <p>
+                  Les prochains retours clients pourront &ecirc;tre ajout&eacute;s ici avec leur source
+                  ou leur note si elle est fournie.
+                </p>
+              </article>
+            </div>
+            <button class="round-control" type="button" aria-label="Avis suivant" data-review-next>&rsaquo;</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-contact" id="contact">
+        <div class="section-inner contact-layout reveal">
+          <div class="contact-copy">
+            <p class="section-kicker">Acc&egrave;s &amp; Contact</p>
+            <h2>Venir chez Taste and Buffet</h2>
+            <div class="title-line"></div>
+            <address>
+              11 Rue Gladys<br />
+              40280 Saint-Pierre-du-Mont, France
+            </address>
+            <a class="phone-link" href="tel:+33558461948">+33 5 58 46 19 48</a>
+            <div class="contact-actions">
+              <a class="button button-primary" href="tel:+33558461948">Appeler</a>
+              <a
+                class="button button-ghost-dark"
+                href="https://www.google.com/maps/search/?api=1&query=11%20Rue%20Gladys%2C%2040280%20Saint-Pierre-du-Mont%2C%20France"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Itin&eacute;raire
+              </a>
+              <a class="button button-light-dark" href="#reservation">R&eacute;server</a>
+            </div>
+            <div class="hours-placeholder">
+              <h3>Horaires</h3>
+              <p>Zone pr&eacute;vue pour ajouter les horaires confirm&eacute;s du restaurant.</p>
+            </div>
+          </div>
+          <div class="map-panel">
+            <iframe
+              title="Carte Google Maps - Taste and Buffet"
+              src="https://www.google.com/maps?q=11%20Rue%20Gladys%2C%2040280%20Saint-Pierre-du-Mont%2C%20France&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      <section class="reservation-block reveal" id="reservation">
+        <p class="section-kicker">R&eacute;servation</p>
+        <h2>R&eacute;server une table</h2>
+        <div class="title-line"></div>
+        <a class="reservation-phone" href="tel:+33558461948">+33 5 58 46 19 48</a>
+        <div class="social-row" aria-label="R&eacute;seaux sociaux">
+          <!-- TODO: remplacer par le lien Facebook officiel du restaurant lorsqu'il sera fourni. -->
+          <span class="social-button is-disabled" role="link" aria-disabled="true" aria-label="Facebook - lien &agrave; renseigner">
+            <span aria-hidden="true">f</span>
+          </span>
+          <a
+            class="social-button"
+            href="https://wa.me/33651863698?text=Bonjour%2C%20je%20souhaite%20obtenir%20des%20informations%20concernant%20Taste%20and%20Buffet."
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp Taste and Buffet"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 3.5a8.1 8.1 0 0 0-7 12.2L4 20.5l4.9-1a8.1 8.1 0 1 0 3.1-16z" />
+              <path d="M9.2 8.1c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.6c.1.2.1.4 0 .6l-.4.5c-.1.2-.2.3 0 .6.4.7 1 1.4 1.7 1.8.3.2.5.2.7 0l.6-.7c.1-.2.4-.2.6-.1l1.6.8c.3.1.4.3.4.5 0 .8-.7 1.7-1.4 1.8-1.1.2-3-.4-4.5-1.8-1.4-1.4-2.3-3.2-2.2-4.4 0-.3.2-.6.3-.8z" />
+            </svg>
+          </a>
+          <!-- TODO: remplacer par le lien Instagram officiel du restaurant lorsqu'il sera fourni. -->
+          <span class="social-button is-disabled" role="link" aria-disabled="true" aria-label="Instagram - lien &agrave; renseigner">
+            <span aria-hidden="true">◎</span>
+          </span>
+        </div>
+      </section>
     </main>
 
-    <footer class="site-footer" id="contact">
-      <span class="footer-anchor" id="a-propos" aria-hidden="true"></span>
-      <span class="footer-anchor" id="reservation" aria-hidden="true"></span>
-      <p>Prix nets en euros - Service compris</p>
-      <div class="footer-credit">
-        <p>© 2026 LinkTable. Tous droits réservés.</p>
-        <p>Site conçu et développé par LinkTable pour ce restaurant.</p>
-        <a href="mentions-legales.html">Mentions légales</a>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>
+          <h2>Taste and Buffet</h2>
+          <p>Restaurant asiatique &ndash; Buffet &agrave; volont&eacute;</p>
+          <p>11 Rue Gladys, 40280 Saint-Pierre-du-Mont, France</p>
+          <a href="tel:+33558461948">+33 5 58 46 19 48</a>
+        </div>
+        <nav aria-label="Navigation du footer">
+          <a href="#actualite">Actualit&eacute;</a>
+          <a href="#restaurant">Le Restaurant</a>
+          <a href="#menu">Menu</a>
+          <a href="carte-des-boissons.html">Carte des boissons</a>
+          <a href="#galerie">Galerie Photos</a>
+          <a href="#avis">Avis Clients</a>
+          <a href="#contact">Acc&egrave;s &amp; Contact</a>
+          <a href="mentions-legales.html">Mentions l&eacute;gales</a>
+        </nav>
+        <div class="footer-socials">
+          <span aria-disabled="true">Facebook</span>
+          <a
+            href="https://wa.me/33651863698?text=Bonjour%2C%20je%20souhaite%20obtenir%20des%20informations%20concernant%20Taste%20and%20Buffet."
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp
+          </a>
+          <span aria-disabled="true">Instagram</span>
+        </div>
       </div>
+      <p class="linktable-credit">Site cr&eacute;&eacute; par LinkTable &ndash; Tous droits r&eacute;serv&eacute;s</p>
     </footer>
 
-    <script src="data.js"></script>
-    <script src="script.js"></script>
+    <div class="mobile-action-bar" aria-label="Actions rapides">
+      <a href="tel:+33558461948">Appeler</a>
+      <a
+        href="https://www.google.com/maps/search/?api=1&query=11%20Rue%20Gladys%2C%2040280%20Saint-Pierre-du-Mont%2C%20France"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Itin&eacute;raire
+      </a>
+      <a href="#reservation">R&eacute;server</a>
+    </div>
+
+    <div class="lightbox" aria-hidden="true" inert role="dialog" aria-modal="true" aria-label="Galerie photos" data-lightbox>
+      <button class="lightbox-close" type="button" aria-label="Fermer la galerie" data-lightbox-close>&times;</button>
+      <button class="lightbox-control lightbox-prev" type="button" aria-label="Photo pr&eacute;c&eacute;dente" data-lightbox-prev>&lsaquo;</button>
+      <figure>
+        <img src="images/fruit ok.png" alt="" data-lightbox-image />
+        <figcaption data-lightbox-caption></figcaption>
+      </figure>
+      <button class="lightbox-control lightbox-next" type="button" aria-label="Photo suivante" data-lightbox-next>&rsaquo;</button>
+    </div>
+
+    <script src="home.js"></script>
   </body>
 </html>

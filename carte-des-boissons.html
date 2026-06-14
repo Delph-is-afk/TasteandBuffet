@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carte des boissons</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="boissons.css" />
+  </head>
+  <body>
+    <header class="site-header" id="accueil">
+      <div class="topbar">
+        <div class="logo-container">
+          <a class="brand-logo" href="#accueil" aria-label="Taste Buffet - Accueil">
+            <img
+              src="images/logo-taste-buffet-header-blanc.png"
+              alt="Taste Buffet - Restaurant asiatique"
+            />
+          </a>
+        </div>
+
+        <div class="topbar-actions">
+          <nav class="primary-nav" aria-label="Navigation principale">
+            <a href="#accueil">Accueil</a>
+            <a class="active" href="#notre-carte">Notre carte</a>
+            <a href="#a-propos">À propos</a>
+            <a href="#reservation">Réservation</a>
+            <a href="#contact">Contact</a>
+          </nav>
+
+          <a class="reserve-link" href="#reservation">Réserver une table</a>
+        </div>
+      </div>
+
+      <div class="header-content">
+        <p class="eyebrow">Restaurant</p>
+        <h1>Carte des boissons</h1>
+        <p class="intro">
+          Cocktails, apéritifs et bières pour accompagner votre moment.
+        </p>
+      </div>
+    </header>
+
+    <nav class="category-nav" aria-label="Catégories de boissons">
+      <div class="nav-scroll" id="categoryNav"></div>
+    </nav>
+
+    <main class="menu-wrapper" id="notre-carte">
+      <div id="menu"></div>
+    </main>
+
+    <footer class="site-footer" id="contact">
+      <span class="footer-anchor" id="a-propos" aria-hidden="true"></span>
+      <span class="footer-anchor" id="reservation" aria-hidden="true"></span>
+      <p>Prix nets en euros - Service compris</p>
+      <div class="footer-credit">
+        <p>© 2026 LinkTable. Tous droits réservés.</p>
+        <p>Site conçu et développé par LinkTable pour ce restaurant.</p>
+        <a href="mentions-legales.html">Mentions légales</a>
+      </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
