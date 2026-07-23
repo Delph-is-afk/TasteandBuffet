@@ -462,6 +462,63 @@
       <button class="lightbox-control lightbox-next" type="button" aria-label="Photo suivante" data-lightbox-next>&rsaquo;</button>
     </div>
 
-    <script src="home.js"></script>
+    <section class="chat-widget" aria-label="Assistant Taste and Buffet" data-chat-widget>
+      <button
+        class="chat-launcher"
+        type="button"
+        aria-label="Ouvrir le chat"
+        aria-expanded="false"
+        aria-controls="chatPanel"
+        data-chat-toggle
+      >
+        <span class="chat-launcher-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        <span class="chat-launcher-text">Une question ?</span>
+      </button>
+
+      <div class="chat-panel" id="chatPanel" role="dialog" aria-modal="false" aria-hidden="true" inert data-chat-panel>
+        <div class="chat-panel-header">
+          <div>
+            <p>Assistant</p>
+            <h2>Taste and Buffet</h2>
+          </div>
+          <button class="chat-close" type="button" aria-label="Fermer le chat" data-chat-close>&times;</button>
+        </div>
+
+        <div class="chat-status">
+          <span aria-hidden="true"></span>
+          Maquette visuelle, chatbot non connect&eacute;
+        </div>
+
+        <div class="chat-messages" aria-live="polite" data-chat-messages>
+          <article class="chat-message chat-message-bot">
+            <p>Bonjour, je peux vous aider &agrave; trouver les tarifs, l'adresse ou les infos de r&eacute;servation.</p>
+          </article>
+          <article class="chat-message chat-message-user">
+            <p>Quels sont vos tarifs le midi ?</p>
+          </article>
+          <article class="chat-message chat-message-bot">
+            <p>Exemple de r&eacute;ponse : les tarifs seront affich&eacute;s ici depuis la FAQ ou une future API.</p>
+          </article>
+        </div>
+
+        <div class="chat-suggestions" aria-label="Questions rapides">
+          <button type="button" data-chat-suggestion="Quels sont les tarifs ?">Tarifs</button>
+          <button type="button" data-chat-suggestion="Comment r&eacute;server ?">R&eacute;servation</button>
+          <button type="button" data-chat-suggestion="O&ugrave; se trouve le restaurant ?">Adresse</button>
+        </div>
+
+        <form class="chat-form" data-chat-form>
+          <label class="sr-only" for="chatInput">Votre question</label>
+          <input id="chatInput" type="text" placeholder="Posez votre question..." autocomplete="off" data-chat-input />
+          <button type="submit">Envoyer</button>
+        </form>
+      </div>
+    </section>
+
+    <script src="home.js?v=chatbox-visual-2"></script>
   </body>
 </html>

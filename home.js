@@ -52,6 +52,7 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     setMenuState(false);
     closeLightbox();
+    closeChat();
   }
 });
 
@@ -254,3 +255,90 @@ reviewViewport?.addEventListener(
   },
   { passive: true },
 );
+
+const chatWidget = document.querySelector("[data-chat-widget]");
+const chatToggle = document.querySelector("[data-chat-toggle]");
+const chatPanel = document.querySelector("[data-chat-panel]");
+const chatClose = document.querySelector("[data-chat-close]");
+const chatForm = document.querySelector("[data-chat-form]");
+const chatInput = document.querySelector("[data-chat-input]");
+const chatMessages = document.querySelector("[data-chat-messages]");
+const chatSuggestions = Array.from(document.querySelectorAll("[data-chat-suggestion]"));
+
+function setChatState(isOpen) {
+  if (!chatWidget || !chatToggle || !chatPanel) return;
+
+  chatWidget.classList.toggle("is-open", isOpen);
+  chatToggle.setAttribute("aria-expanded", String(isOpen));
+  chatToggle.setAttribute("aria-label", isOpen ? "Fermer le chat" : "Ouvrir le chat");
+  chatPanel.setAttribute("aria-hidden", String(!isOpen));
+  chatPanel.toggleAttribute("inert", !isOpen);
+  document.body.classList.toggle("chat-open", isOpen);
+
+  if (isOpen) {
+    window.setTimeout(() => chatInput?.focus(), 180);
+  }
+}
+
+function closeChat() {
+  setChatState(false);
+}
+
+function addChatMessage(text, type) {
+  if (!chatMessages || !text.trim()) return;
+
+  const message = document.createElement("article");
+  message.className = `chat-message chat-message-${type}`;
+
+  const paragraph = document.createElement("p");
+  paragraph.textContent = text;
+  message.append(paragraph);
+  chatMessages.append(message);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function showMockReply() {
+  window.setTimeout(() => {
+    addChatMessage(
+      "Reponse d'exemple : ici, le futur assistant utilisera la FAQ du site pour repondre sans inventer d'information.",
+      "bot",
+    );
+  }, 260);
+}
+
+document.addEventListener("click", (event) => {
+  if (event.target.closest("[data-chat-toggle]")) {
+    setChatState(!chatWidget?.classList.contains("is-open"));
+  }
+
+  if (event.target.closest("[data-chat-close]")) {
+    closeChat();
+  }
+});
+
+chatSuggestions.forEach((button) => {
+  button.addEventListener("click", () => {
+    const question = button.dataset.chatSuggestion || button.textContent || "";
+    if (chatInput) {
+      chatInput.value = question;
+      chatInput.focus();
+    }
+  });
+});
+
+chatForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const question = chatInput?.value.trim() || "";
+  if (!question) return;
+
+  addChatMessage(question, "user");
+  chatInput.value = "";
+  showMockReply();
+});
+
+chatInput?.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" && !event.shiftKey) {
+    event.preventDefault();
+    chatForm?.requestSubmit();
+  }
+});
