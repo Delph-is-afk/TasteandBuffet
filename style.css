@@ -386,9 +386,9 @@ button {
 }
 
 .hero-title {
-  max-width: 860px;
+  max-width: 780px;
   margin: 0;
-  font-size: clamp(2.55rem, 4.2vw, 4.35rem);
+  font-size: clamp(2.35rem, 3.65vw, 3.8rem);
   text-shadow: 0 12px 40px rgba(0, 0, 0, 0.38);
 }
 
@@ -459,7 +459,7 @@ button {
 .section h2,
 .reservation-block h2 {
   color: var(--bordeaux-deep);
-  font-size: clamp(2.35rem, 3.3vw, 3.25rem);
+  font-size: clamp(2.05rem, 2.75vw, 2.7rem);
 }
 
 .title-line {
@@ -607,7 +607,7 @@ button {
 
 .split-section {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  grid-template-columns: minmax(0, 0.82fr) minmax(320px, 0.95fr);
   align-items: center;
   gap: clamp(24px, 4vw, 52px);
   padding: 0 clamp(18px, 4vw, 48px);
@@ -618,7 +618,7 @@ button {
 }
 
 .split-section-reverse {
-  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(320px, 0.95fr) minmax(0, 0.82fr);
 }
 
 .split-section-reverse .split-media {
@@ -626,11 +626,16 @@ button {
 }
 
 .split-media {
-  min-height: clamp(260px, 34vw, 430px);
+  width: min(100%, 560px);
+  min-height: clamp(220px, 28vw, 340px);
   overflow: hidden;
   border-radius: 8px;
   background: var(--sand);
   box-shadow: var(--soft-shadow);
+}
+
+.split-section-reverse .split-media {
+  justify-self: end;
 }
 
 .split-media img {
@@ -944,7 +949,7 @@ button {
 
 .contact-layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 0.88fr);
   gap: clamp(24px, 4vw, 52px);
   align-items: stretch;
 }
@@ -988,7 +993,10 @@ button {
 }
 
 .map-panel {
-  min-height: clamp(320px, 34vw, 380px);
+  justify-self: end;
+  align-self: center;
+  width: min(100%, 560px);
+  min-height: clamp(240px, 26vw, 310px);
   overflow: hidden;
   border-radius: 8px;
   background: var(--sand);
@@ -1572,7 +1580,7 @@ button {
   }
 
   .hero-title {
-    font-size: clamp(2.4rem, 5.8vw, 3.65rem);
+    font-size: clamp(2.1rem, 5.2vw, 3.05rem);
   }
 
   .hero-subtitle {
@@ -1590,7 +1598,7 @@ button {
 
   .section h2,
   .reservation-block h2 {
-    font-size: clamp(2.15rem, 4.8vw, 2.75rem);
+    font-size: clamp(1.85rem, 4.2vw, 2.3rem);
   }
 
   .footer-inner h2 {
@@ -1619,6 +1627,7 @@ button {
 
   .split-section-reverse .split-media {
     order: 0;
+    justify-self: start;
   }
 
   .split-copy {
@@ -1695,7 +1704,7 @@ button {
   }
 
   .hero-title {
-    font-size: clamp(1.85rem, 7vw, 2.7rem);
+    font-size: clamp(1.65rem, 6.4vw, 2.25rem);
   }
 
   .hero-subtitle {
@@ -1704,7 +1713,7 @@ button {
 
   .section h2,
   .reservation-block h2 {
-    font-size: 2.15rem;
+    font-size: 1.85rem;
   }
 
   .footer-inner h2 {
@@ -1744,7 +1753,8 @@ button {
 
   .split-media,
   .map-panel {
-    min-height: 260px;
+    width: 100%;
+    min-height: 210px;
   }
 
   .price-row,
@@ -1865,11 +1875,11 @@ button {
 
   .section h2,
   .reservation-block h2 {
-    font-size: 1.95rem;
+    font-size: 1.65rem;
   }
 
   .hero-title {
-    font-size: clamp(1.45rem, 6.5vw, 1.8rem);
+    font-size: clamp(1.32rem, 5.9vw, 1.58rem);
   }
 
   .hero-subtitle {
