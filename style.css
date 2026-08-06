@@ -377,7 +377,6 @@ button {
 
 .hero h1,
 .section h2,
-.reservation-block h2,
 .footer-inner h2 {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
@@ -456,8 +455,7 @@ button {
   width: min(860px, 100%);
 }
 
-.section h2,
-.reservation-block h2 {
+.section h2 {
   color: var(--bordeaux-deep);
   font-size: clamp(2.05rem, 2.75vw, 2.7rem);
 }
@@ -972,8 +970,64 @@ button {
 
 .contact-actions {
   display: flex;
-  gap: 10px;
+  margin-top: 6px;
+  gap: 12px;
   flex-wrap: wrap;
+}
+
+.contact-social-button {
+  width: 60px;
+  height: 60px;
+  min-width: 0;
+  padding: 0;
+  justify-content: center;
+  border-radius: 999px;
+  box-shadow: 0 12px 26px rgba(52, 18, 15, 0.14);
+}
+
+.contact-social-button svg {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+}
+
+.contact-social-button svg * {
+  fill: currentColor;
+}
+
+.contact-social-button.social-facebook {
+  color: var(--cream);
+  background: #8f6a61;
+  border-color: #8f6a61;
+}
+
+.contact-social-button.social-instagram {
+  color: var(--bordeaux);
+  background: var(--cream);
+  border-color: rgba(91, 36, 31, 0.28);
+}
+
+.contact-social-button.social-instagram svg * {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.contact-social-button.social-instagram svg circle:last-child {
+  fill: currentColor;
+  stroke: none;
+}
+
+.contact-social-button.social-whatsapp {
+  color: var(--cream);
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.contact-social-button:hover {
+  color: var(--ink);
+  background: var(--gold);
+  border-color: var(--gold);
 }
 
 .hours-placeholder {
@@ -1008,72 +1062,6 @@ button {
   height: 100%;
   min-height: inherit;
   border: 0;
-}
-
-.reservation-block {
-  padding: clamp(52px, 7vw, 86px) clamp(18px, 4vw, 48px);
-  background: #fffdf7;
-  text-align: center;
-}
-
-.reservation-block .title-line {
-  margin-inline: auto;
-  transform-origin: center;
-}
-
-.reservation-phone {
-  display: inline-flex;
-  max-width: 100%;
-  margin: 4px auto 24px;
-  color: var(--bordeaux);
-  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-  font-weight: 900;
-  line-height: 1;
-  text-decoration: none;
-  overflow-wrap: anywhere;
-}
-
-.social-row {
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  flex-wrap: wrap;
-}
-
-.social-button {
-  width: 58px;
-  height: 58px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(91, 36, 31, 0.22);
-  border-radius: 50%;
-  color: var(--cream);
-  background: var(--bordeaux);
-  font-size: 1.55rem;
-  font-weight: 900;
-  text-decoration: none;
-  transition:
-    transform 220ms ease,
-    background 220ms ease,
-    color 220ms ease;
-}
-
-.social-button svg {
-  width: 28px;
-  height: 28px;
-  fill: currentColor;
-}
-
-.social-button:hover {
-  transform: translateY(-4px);
-  color: var(--ink);
-  background: var(--gold);
-}
-
-.social-button.is-disabled {
-  opacity: 0.72;
-  cursor: not-allowed;
 }
 
 .site-footer {
@@ -1596,8 +1584,7 @@ button {
     border-left: 0;
   }
 
-  .section h2,
-  .reservation-block h2 {
+  .section h2 {
     font-size: clamp(1.85rem, 4.2vw, 2.3rem);
   }
 
@@ -1611,10 +1598,6 @@ button {
 
   .phone-link {
     font-size: 1.65rem;
-  }
-
-  .reservation-phone {
-    font-size: 3rem;
   }
 
   .split-section,
@@ -1711,8 +1694,7 @@ button {
     font-size: 0.98rem;
   }
 
-  .section h2,
-  .reservation-block h2 {
+  .section h2 {
     font-size: 1.85rem;
   }
 
@@ -1728,10 +1710,6 @@ button {
 
   .drinks-showcase-content p {
     font-size: 2.3rem;
-  }
-
-  .reservation-phone {
-    font-size: 2.25rem;
   }
 
   .hero-actions {
@@ -1815,8 +1793,10 @@ button {
     flex: 1 1 100%;
   }
 
-  .social-row {
-    gap: 14px;
+  .contact-actions .contact-social-button {
+    flex: 0 0 58px;
+    width: 58px;
+    height: 58px;
   }
 
   .lightbox {
@@ -1873,8 +1853,7 @@ button {
     width: 100%;
   }
 
-  .section h2,
-  .reservation-block h2 {
+  .section h2 {
     font-size: 1.65rem;
   }
 
@@ -1918,15 +1897,6 @@ button {
 
   .phone-link {
     font-size: 1.35rem;
-  }
-
-  .reservation-phone {
-    font-size: 1.85rem;
-  }
-
-  .social-button {
-    width: 54px;
-    height: 54px;
   }
 
   .footer-inner {
