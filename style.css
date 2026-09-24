@@ -19,6 +19,7 @@
 }
 
 html {
+  font-size: 94%;
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-height);
 }
@@ -107,7 +108,7 @@ button {
   width: min(1360px, 100%);
   min-height: var(--header-height);
   margin: 0 auto;
-  padding: 10px clamp(16px, 4vw, 42px);
+  padding: 8px clamp(16px, 4vw, 38px);
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
@@ -117,7 +118,7 @@ button {
 .brand {
   display: inline-flex;
   align-items: center;
-  width: clamp(160px, 16vw, 220px);
+  width: clamp(150px, 14vw, 200px);
   text-decoration: none;
 }
 
@@ -176,8 +177,8 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 46px;
-  padding: 12px 16px;
+  min-height: 42px;
+  padding: 10px 14px;
   border: 1px solid transparent;
   border-radius: 6px;
   font-size: 0.76rem;
@@ -376,7 +377,6 @@ button {
 
 .hero h1,
 .section h2,
-.reservation-block h2,
 .footer-inner h2 {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
@@ -385,9 +385,9 @@ button {
 }
 
 .hero-title {
-  max-width: 860px;
+  max-width: 780px;
   margin: 0;
-  font-size: clamp(2.55rem, 4.2vw, 4.35rem);
+  font-size: clamp(2.35rem, 3.65vw, 3.8rem);
   text-shadow: 0 12px 40px rgba(0, 0, 0, 0.38);
 }
 
@@ -404,13 +404,13 @@ button {
   max-width: 640px;
   margin: 18px 0 0;
   color: rgba(255, 248, 236, 0.94);
-  font-size: clamp(0.98rem, 1.2vw, 1.2rem);
+  font-size: clamp(0.96rem, 1.2vw, 1.2rem);
   font-weight: 700;
   line-height: 1.5;
 }
 
 .hero-actions {
-  margin-top: 28px;
+  margin-top: 26px;
   display: flex;
   justify-content: flex-start;
   gap: 12px;
@@ -442,7 +442,7 @@ button {
 }
 
 .section {
-  padding: clamp(50px, 6.4vw, 88px) clamp(18px, 4vw, 48px);
+  padding: clamp(50px, 6.4vw, 88px) clamp(18px, 4vw, 44px);
 }
 
 .section-inner,
@@ -455,10 +455,9 @@ button {
   width: min(860px, 100%);
 }
 
-.section h2,
-.reservation-block h2 {
+.section h2 {
   color: var(--bordeaux-deep);
-  font-size: clamp(2.35rem, 3.3vw, 3.25rem);
+  font-size: clamp(2.05rem, 2.75vw, 2.7rem);
 }
 
 .title-line {
@@ -483,7 +482,7 @@ button {
 .customer-ratings {
   position: relative;
   z-index: 4;
-  padding: clamp(14px, 2.4vw, 26px) clamp(18px, 4vw, 48px) 0;
+  padding: clamp(14px, 2.4vw, 26px) clamp(18px, 4vw, 44px) 0;
   background: var(--cream);
 }
 
@@ -540,20 +539,20 @@ button {
 .rating-rank {
   margin-bottom: 6px;
   color: var(--gold);
-  font-size: clamp(1.16rem, 1.5vw, 1.48rem);
+  font-size: clamp(1.15rem, 1.5vw, 1.48rem);
   line-height: 1;
 }
 
 .rating-content p {
   margin: 0;
   color: var(--ink);
-  font-size: clamp(0.98rem, 1.15vw, 1.16rem);
+  font-size: clamp(0.94rem, 1.15vw, 1.16rem);
   font-weight: 800;
   line-height: 1.25;
 }
 
 .rating-content strong {
-  font-size: clamp(1.22rem, 1.55vw, 1.52rem);
+  font-size: clamp(1.18rem, 1.55vw, 1.52rem);
   font-weight: 900;
 }
 
@@ -562,7 +561,7 @@ button {
   display: block;
   margin-top: 6px;
   color: var(--ink);
-  font-size: clamp(0.88rem, 1vw, 1rem);
+  font-size: clamp(0.86rem, 1vw, 1rem);
   line-height: 1.35;
 }
 
@@ -606,7 +605,7 @@ button {
 
 .split-section {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  grid-template-columns: minmax(0, 0.82fr) minmax(320px, 0.95fr);
   align-items: center;
   gap: clamp(24px, 4vw, 52px);
   padding: 0 clamp(18px, 4vw, 48px);
@@ -617,7 +616,7 @@ button {
 }
 
 .split-section-reverse {
-  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(320px, 0.95fr) minmax(0, 0.82fr);
 }
 
 .split-section-reverse .split-media {
@@ -625,11 +624,16 @@ button {
 }
 
 .split-media {
-  min-height: clamp(260px, 34vw, 430px);
+  width: min(100%, 560px);
+  min-height: clamp(220px, 28vw, 340px);
   overflow: hidden;
   border-radius: 8px;
   background: var(--sand);
   box-shadow: var(--soft-shadow);
+}
+
+.split-section-reverse .split-media {
+  justify-self: end;
 }
 
 .split-media img {
@@ -943,7 +947,7 @@ button {
 
 .contact-layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 0.88fr);
   gap: clamp(24px, 4vw, 52px);
   align-items: stretch;
 }
@@ -966,8 +970,64 @@ button {
 
 .contact-actions {
   display: flex;
-  gap: 10px;
+  margin-top: 6px;
+  gap: 12px;
   flex-wrap: wrap;
+}
+
+.contact-social-button {
+  width: 60px;
+  height: 60px;
+  min-width: 0;
+  padding: 0;
+  justify-content: center;
+  border-radius: 999px;
+  box-shadow: 0 12px 26px rgba(52, 18, 15, 0.14);
+}
+
+.contact-social-button svg {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+}
+
+.contact-social-button svg * {
+  fill: currentColor;
+}
+
+.contact-social-button.social-facebook {
+  color: var(--cream);
+  background: #8f6a61;
+  border-color: #8f6a61;
+}
+
+.contact-social-button.social-instagram {
+  color: var(--bordeaux);
+  background: var(--cream);
+  border-color: rgba(91, 36, 31, 0.28);
+}
+
+.contact-social-button.social-instagram svg * {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.contact-social-button.social-instagram svg circle:last-child {
+  fill: currentColor;
+  stroke: none;
+}
+
+.contact-social-button.social-whatsapp {
+  color: var(--cream);
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.contact-social-button:hover {
+  color: var(--ink);
+  background: var(--gold);
+  border-color: var(--gold);
 }
 
 .hours-placeholder {
@@ -987,7 +1047,10 @@ button {
 }
 
 .map-panel {
-  min-height: clamp(320px, 34vw, 380px);
+  justify-self: end;
+  align-self: center;
+  width: min(100%, 560px);
+  min-height: clamp(240px, 26vw, 310px);
   overflow: hidden;
   border-radius: 8px;
   background: var(--sand);
@@ -999,72 +1062,6 @@ button {
   height: 100%;
   min-height: inherit;
   border: 0;
-}
-
-.reservation-block {
-  padding: clamp(52px, 7vw, 86px) clamp(18px, 4vw, 48px);
-  background: #fffdf7;
-  text-align: center;
-}
-
-.reservation-block .title-line {
-  margin-inline: auto;
-  transform-origin: center;
-}
-
-.reservation-phone {
-  display: inline-flex;
-  max-width: 100%;
-  margin: 4px auto 24px;
-  color: var(--bordeaux);
-  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-  font-weight: 900;
-  line-height: 1;
-  text-decoration: none;
-  overflow-wrap: anywhere;
-}
-
-.social-row {
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  flex-wrap: wrap;
-}
-
-.social-button {
-  width: 58px;
-  height: 58px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(91, 36, 31, 0.22);
-  border-radius: 50%;
-  color: var(--cream);
-  background: var(--bordeaux);
-  font-size: 1.55rem;
-  font-weight: 900;
-  text-decoration: none;
-  transition:
-    transform 220ms ease,
-    background 220ms ease,
-    color 220ms ease;
-}
-
-.social-button svg {
-  width: 28px;
-  height: 28px;
-  fill: currentColor;
-}
-
-.social-button:hover {
-  transform: translateY(-4px);
-  color: var(--ink);
-  background: var(--gold);
-}
-
-.social-button.is-disabled {
-  opacity: 0.72;
-  cursor: not-allowed;
 }
 
 .site-footer {
@@ -1598,7 +1595,7 @@ button {
 
 @media (max-width: 900px) {
   :root {
-    --header-height: 74px;
+    --header-height: 70px;
   }
 
   .header-inner {
@@ -1607,7 +1604,7 @@ button {
   }
 
   .brand {
-    width: clamp(150px, 38vw, 230px);
+    width: clamp(140px, 35vw, 210px);
   }
 
   .header-reserve {
@@ -1620,7 +1617,7 @@ button {
   }
 
   .hero-title {
-    font-size: clamp(2.45rem, 5.8vw, 3.65rem);
+    font-size: clamp(2.1rem, 5.2vw, 3.05rem);
   }
 
   .hero-subtitle {
@@ -1636,9 +1633,8 @@ button {
     border-left: 0;
   }
 
-  .section h2,
-  .reservation-block h2 {
-    font-size: clamp(2.15rem, 4.8vw, 2.75rem);
+  .section h2 {
+    font-size: clamp(1.85rem, 4.2vw, 2.3rem);
   }
 
   .footer-inner h2 {
@@ -1653,10 +1649,6 @@ button {
     font-size: 1.65rem;
   }
 
-  .reservation-phone {
-    font-size: 3rem;
-  }
-
   .split-section,
   .split-section-reverse,
   .contact-layout,
@@ -1667,6 +1659,7 @@ button {
 
   .split-section-reverse .split-media {
     order: 0;
+    justify-self: start;
   }
 
   .split-copy {
@@ -1738,25 +1731,24 @@ button {
   }
 
   .hero-content {
-    padding-top: 96px;
+    padding-top: 90px;
     padding-bottom: 58px;
   }
 
   .hero-title {
-    font-size: clamp(1.95rem, 7vw, 2.75rem);
+    font-size: clamp(1.65rem, 6.4vw, 2.25rem);
   }
 
   .hero-subtitle {
-    font-size: 1rem;
+    font-size: 0.98rem;
   }
 
-  .section h2,
-  .reservation-block h2 {
-    font-size: 2.15rem;
+  .section h2 {
+    font-size: 1.85rem;
   }
 
   .footer-inner h2 {
-    font-size: 2rem;
+    font-size: 1.95rem;
   }
 
   .drinks-showcase {
@@ -1767,10 +1759,6 @@ button {
 
   .drinks-showcase-content p {
     font-size: 2.3rem;
-  }
-
-  .reservation-phone {
-    font-size: 2.35rem;
   }
 
   .hero-actions {
@@ -1792,7 +1780,8 @@ button {
 
   .split-media,
   .map-panel {
-    min-height: 260px;
+    width: 100%;
+    min-height: 210px;
   }
 
   .price-row,
@@ -1853,8 +1842,10 @@ button {
     flex: 1 1 100%;
   }
 
-  .social-row {
-    gap: 14px;
+  .contact-actions .contact-social-button {
+    flex: 0 0 58px;
+    width: 58px;
+    height: 58px;
   }
 
   .lightbox {
@@ -1876,18 +1867,18 @@ button {
 
 @media (max-width: 430px) {
   .header-inner {
-    padding-inline: 16px;
+    padding-inline: 14px;
   }
 
   .brand {
     justify-self: start;
-    width: min(58vw, 210px);
+    width: min(56vw, 190px);
   }
 
   .menu-toggle {
     justify-self: end;
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
   }
 
   .chat-launcher-text {
@@ -1911,17 +1902,16 @@ button {
     width: 100%;
   }
 
-  .section h2,
-  .reservation-block h2 {
-    font-size: 1.95rem;
+  .section h2 {
+    font-size: 1.65rem;
   }
 
   .hero-title {
-    font-size: clamp(1.5rem, 6.5vw, 1.85rem);
+    font-size: clamp(1.32rem, 5.9vw, 1.58rem);
   }
 
   .hero-subtitle {
-    font-size: 1rem;
+    font-size: 0.92rem;
   }
 
   .footer-inner h2 {
@@ -1956,15 +1946,6 @@ button {
 
   .phone-link {
     font-size: 1.35rem;
-  }
-
-  .reservation-phone {
-    font-size: 1.85rem;
-  }
-
-  .social-button {
-    width: 54px;
-    height: 54px;
   }
 
   .footer-inner {
