@@ -263,7 +263,105 @@ const chatClose = document.querySelector("[data-chat-close]");
 const chatForm = document.querySelector("[data-chat-form]");
 const chatInput = document.querySelector("[data-chat-input]");
 const chatMessages = document.querySelector("[data-chat-messages]");
-const chatSuggestions = Array.from(document.querySelectorAll("[data-chat-suggestion]"));
+const chatSuggestions = document.querySelector("[data-chat-suggestions]");
+const faqEntries = Array.isArray(window.TASTE_FAQ) ? window.TASTE_FAQ : [];
+const restaurantPhone = "05 58 46 19 48";
+const restaurantPhoneLink = "tel:+33558461948";
+
+const faqTopics = [
+  { label: "Horaires", categories: ["Horaires"] },
+  { label: "Tarifs", categories: ["Prix du buffet"] },
+  { label: "Le buffet", categories: ["Buffet et cuisine", "Fonctionnement du buffet"] },
+  { label: "Réserver", categories: ["Réservation et groupes"] },
+  { label: "Allergènes", categories: ["Régimes et allergènes"] },
+  { label: "En famille", categories: ["Enfants et familles"] },
+  { label: "Accès et services", categories: ["Accès et confort", "Informations générales"] },
+  { label: "Paiement", categories: ["Paiement"] },
+  { label: "À emporter", categories: ["À emporter et livraison"] },
+  { label: "Anniversaire", categories: ["Anniversaires et événements"] },
+];
+
+const ignoredWords = new Set([
+  "avec",
+  "avez",
+  "dans",
+  "des",
+  "est",
+  "etes",
+  "fait",
+  "faites",
+  "pour",
+  "peut",
+  "peut-on",
+  "peux",
+  "puis",
+  "quel",
+  "quelle",
+  "quels",
+  "quelles",
+  "restaurant",
+  "sont",
+  "une",
+  "vous",
+  "votre",
+]);
+
+const wordAliases = {
+  appeler: "contact",
+  appel: "contact",
+  numero: "contact",
+  telephone: "contact",
+  cout: "prix",
+  coute: "prix",
+  tarif: "prix",
+  tarifs: "prix",
+  fermeture: "horaire",
+  heure: "horaire",
+  heures: "horaire",
+  ouvert: "horaire",
+  ouverte: "horaire",
+  ouverts: "horaire",
+  ouverture: "horaire",
+  reservation: "reserver",
+  reserve: "reserver",
+  table: "reserver",
+  localisation: "adresse",
+  situe: "adresse",
+  trouver: "adresse",
+  garer: "parking",
+  stationnement: "parking",
+  paiement: "payer",
+  paye: "payer",
+  payer: "payer",
+  anniversaire: "anniversaire",
+  birthday: "anniversaire",
+  wifi: "wifi",
+};
+
+function normalizeChatText(value) {
+  return String(value || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/œ/g, "oe")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function tokenizeChatText(value) {
+  return normalizeChatText(value)
+    .split(" ")
+    .filter((word) => word.length > 2 && !ignoredWords.has(word))
+    .map((word) => wordAliases[word] || word.replace(/s$/, ""));
+}
+
+const searchableFaq = faqEntries.map((entry) => ({
+  ...entry,
+  normalizedQuestion: normalizeChatText(entry.question),
+  questionTokens: new Set(tokenizeChatText(entry.question)),
+  answerTokens: new Set(tokenizeChatText(entry.answer)),
+  categoryTokens: new Set(tokenizeChatText(entry.category)),
+}));
 
 function setChatState(isOpen) {
   if (!chatWidget || !chatToggle || !chatPanel) return;
@@ -284,7 +382,7 @@ function closeChat() {
   setChatState(false);
 }
 
-function addChatMessage(text, type) {
+function addChatMessage(text, type, options = {}) {
   if (!chatMessages || !text.trim()) return;
 
   const message = document.createElement("article");
@@ -293,17 +391,164 @@ function addChatMessage(text, type) {
   const paragraph = document.createElement("p");
   paragraph.textContent = text;
   message.append(paragraph);
+
+  if (options.showPhone) {
+    const phoneLink = document.createElement("a");
+    phoneLink.className = "chat-phone-link";
+    phoneLink.href = restaurantPhoneLink;
+    phoneLink.textContent = `Appeler le ${restaurantPhone}`;
+    message.append(phoneLink);
+  }
+
   chatMessages.append(message);
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-function showMockReply() {
+function showTypingReply(callback) {
+  if (!chatMessages) return;
+
+  const typing = document.createElement("article");
+  typing.className = "chat-message chat-message-bot chat-message-typing";
+  typing.setAttribute("aria-label", "Réponse en cours");
+  typing.innerHTML = "<span></span><span></span><span></span>";
+  chatMessages.append(typing);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+
   window.setTimeout(() => {
-    addChatMessage(
-      "Reponse d'exemple : ici, le futur assistant utilisera la FAQ du site pour repondre sans inventer d'information.",
-      "bot",
-    );
-  }, 260);
+    typing.remove();
+    callback();
+  }, 340);
+}
+
+function createSuggestionButton(label, dataName, dataValue) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.textContent = label;
+  button.dataset[dataName] = dataValue;
+  return button;
+}
+
+function renderTopics() {
+  if (!chatSuggestions) return;
+
+  chatSuggestions.classList.remove("is-question-list");
+  chatSuggestions.replaceChildren(
+    ...faqTopics.slice(0, 8).map((topic) =>
+      createSuggestionButton(topic.label, "chatTopic", topic.label),
+    ),
+  );
+}
+
+function renderTopicQuestions(topic) {
+  if (!chatSuggestions) return;
+
+  const questions = faqEntries
+    .filter((entry) => topic.categories.includes(entry.category))
+    .slice(0, 5);
+  const buttons = questions.map((entry) =>
+    createSuggestionButton(entry.question, "chatQuestion", entry.question),
+  );
+  buttons.push(createSuggestionButton("Voir les autres sujets", "chatHome", "true"));
+  chatSuggestions.classList.add("is-question-list");
+  chatSuggestions.replaceChildren(...buttons);
+}
+
+function renderRelatedQuestions(entry) {
+  if (!chatSuggestions) return;
+
+  const related = faqEntries
+    .filter((candidate) => candidate.category === entry.category && candidate.question !== entry.question)
+    .slice(0, 3);
+  const buttons = related.map((candidate) =>
+    createSuggestionButton(candidate.question, "chatQuestion", candidate.question),
+  );
+  buttons.push(createSuggestionButton("Autres sujets", "chatHome", "true"));
+  chatSuggestions.classList.add("is-question-list");
+  chatSuggestions.replaceChildren(...buttons);
+}
+
+function findFaqAnswer(question) {
+  const normalizedQuery = normalizeChatText(question);
+  const directQuestion = [
+    {
+      matches: normalizedQuery === "adresse" || /^(quelle est )?(votre |l )?adresse$/.test(normalizedQuery),
+      question: "Où se trouve le restaurant ?",
+    },
+    {
+      matches: normalizedQuery === "telephone" || normalizedQuery === "numero de telephone",
+      question: "Quel est le numéro de téléphone ?",
+    },
+    {
+      matches: normalizedQuery === "reservation" || normalizedQuery === "reserver",
+      question: "Comment réserver une table ?",
+    },
+  ].find((shortcut) => shortcut.matches);
+
+  if (directQuestion) {
+    return searchableFaq.find((entry) => entry.question === directQuestion.question) || null;
+  }
+
+  const queryTokens = [...new Set(tokenizeChatText(question))];
+
+  if (!normalizedQuery || queryTokens.length === 0) return null;
+
+  const ranked = searchableFaq
+    .map((entry) => {
+      let score = 0;
+      let matchedTokens = 0;
+
+      if (entry.normalizedQuestion === normalizedQuery) score += 40;
+      if (normalizedQuery.length > 4 && entry.normalizedQuestion.includes(normalizedQuery)) score += 12;
+
+      queryTokens.forEach((token) => {
+        let matched = false;
+        if (entry.questionTokens.has(token)) {
+          score += 6;
+          matched = true;
+        } else if (entry.normalizedQuestion.includes(token)) {
+          score += 3;
+          matched = true;
+        }
+
+        if (entry.categoryTokens.has(token)) {
+          score += 2.5;
+          matched = true;
+        }
+        if (entry.answerTokens.has(token)) score += 1;
+        if (matched) matchedTokens += 1;
+      });
+
+      return { entry, score, coverage: matchedTokens / queryTokens.length };
+    })
+    .sort((a, b) => b.score - a.score);
+
+  const best = ranked[0];
+  if (!best || best.score < 5 || best.coverage < 0.34) return null;
+  return best.entry;
+}
+
+function answerChatQuestion(question) {
+  const cleanedQuestion = question.trim();
+  if (!cleanedQuestion) return;
+
+  addChatMessage(cleanedQuestion, "user");
+  if (chatInput) chatInput.value = "";
+
+  showTypingReply(() => {
+    const result = findFaqAnswer(cleanedQuestion);
+    if (!result) {
+      addChatMessage(
+        "Je n'ai pas trouvé cette information dans la FAQ. Le restaurant pourra vous répondre directement par téléphone.",
+        "bot",
+        { showPhone: true },
+      );
+      renderTopics();
+      return;
+    }
+
+    addChatMessage(result.answer, "bot", { showPhone: result.needsCall });
+    renderRelatedQuestions(result);
+  });
 }
 
 document.addEventListener("click", (event) => {
@@ -316,14 +561,28 @@ document.addEventListener("click", (event) => {
   }
 });
 
-chatSuggestions.forEach((button) => {
-  button.addEventListener("click", () => {
-    const question = button.dataset.chatSuggestion || button.textContent || "";
-    if (chatInput) {
-      chatInput.value = question;
-      chatInput.focus();
-    }
-  });
+chatSuggestions?.addEventListener("click", (event) => {
+  const button = event.target.closest("button");
+  if (!button) return;
+
+  if (button.dataset.chatHome) {
+    renderTopics();
+    addChatMessage("Choisissez un autre sujet, ou écrivez votre question.", "bot");
+    return;
+  }
+
+  if (button.dataset.chatTopic) {
+    const topic = faqTopics.find((candidate) => candidate.label === button.dataset.chatTopic);
+    if (!topic) return;
+    addChatMessage(topic.label, "user");
+    addChatMessage("Voici les questions les plus fréquentes sur ce sujet.", "bot");
+    renderTopicQuestions(topic);
+    return;
+  }
+
+  if (button.dataset.chatQuestion) {
+    answerChatQuestion(button.dataset.chatQuestion);
+  }
 });
 
 chatForm?.addEventListener("submit", (event) => {
@@ -331,9 +590,7 @@ chatForm?.addEventListener("submit", (event) => {
   const question = chatInput?.value.trim() || "";
   if (!question) return;
 
-  addChatMessage(question, "user");
-  chatInput.value = "";
-  showMockReply();
+  answerChatQuestion(question);
 });
 
 chatInput?.addEventListener("keydown", (event) => {
@@ -342,3 +599,5 @@ chatInput?.addEventListener("keydown", (event) => {
     chatForm?.requestSubmit();
   }
 });
+
+renderTopics();

@@ -490,35 +490,31 @@
 
         <div class="chat-status">
           <span aria-hidden="true"></span>
-          Maquette visuelle, chatbot non connect&eacute;
+          FAQ instantan&eacute;e du restaurant
         </div>
 
         <div class="chat-messages" aria-live="polite" data-chat-messages>
           <article class="chat-message chat-message-bot">
-            <p>Bonjour, je peux vous aider &agrave; trouver les tarifs, l'adresse ou les infos de r&eacute;servation.</p>
-          </article>
-          <article class="chat-message chat-message-user">
-            <p>Quels sont vos tarifs le midi ?</p>
-          </article>
-          <article class="chat-message chat-message-bot">
-            <p>Exemple de r&eacute;ponse : les tarifs seront affich&eacute;s ici depuis la FAQ ou une future API.</p>
+            <p>Bonjour, que souhaitez-vous savoir sur Taste and Buffet&nbsp;?</p>
           </article>
         </div>
 
-        <div class="chat-suggestions" aria-label="Questions rapides">
-          <button type="button" data-chat-suggestion="Quels sont les tarifs ?">Tarifs</button>
-          <button type="button" data-chat-suggestion="Comment r&eacute;server ?">R&eacute;servation</button>
-          <button type="button" data-chat-suggestion="O&ugrave; se trouve le restaurant ?">Adresse</button>
+        <div class="chat-suggestions" aria-label="Questions rapides" data-chat-suggestions>
+          <button type="button" data-chat-topic="Horaires">Horaires</button>
+          <button type="button" data-chat-topic="Tarifs">Tarifs</button>
+          <button type="button" data-chat-topic="Buffet">Le buffet</button>
+          <button type="button" data-chat-topic="Réserver">R&eacute;server</button>
         </div>
 
         <form class="chat-form" data-chat-form>
           <label class="sr-only" for="chatInput">Votre question</label>
-          <input id="chatInput" type="text" placeholder="Posez votre question..." autocomplete="off" data-chat-input />
+          <input id="chatInput" type="text" maxlength="180" placeholder="Posez votre question..." autocomplete="off" autocapitalize="sentences" data-chat-input />
           <button type="submit">Envoyer</button>
         </form>
       </div>
     </section>
 
-    <script src="home.js?v=chatbox-visual-2"></script>
+    <script src="faq-data.js?v=1"></script>
+    <script src="home.js?v=faq-assistant-1"></script>
   </body>
 </html>

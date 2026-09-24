@@ -1354,19 +1354,16 @@ button {
 
 .chat-suggestions {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
-  overflow-x: auto;
+  max-height: 138px;
+  overflow-y: auto;
   padding: 0 18px 14px;
   background: #fffdf7;
-  scrollbar-width: none;
-}
-
-.chat-suggestions::-webkit-scrollbar {
-  display: none;
 }
 
 .chat-suggestions button {
-  flex: 0 0 auto;
+  flex: 1 1 calc(50% - 4px);
   min-height: 34px;
   padding: 8px 11px;
   border: 1px solid rgba(91, 36, 31, 0.2);
@@ -1376,6 +1373,45 @@ button {
   cursor: pointer;
   font-size: 0.78rem;
   font-weight: 900;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.chat-suggestions.is-question-list button {
+  flex-basis: 100%;
+}
+
+.chat-phone-link {
+  display: inline-flex;
+  margin-top: 10px;
+  color: var(--bordeaux);
+  font-weight: 900;
+  text-underline-offset: 3px;
+}
+
+.chat-message-typing {
+  display: flex;
+  gap: 4px;
+  width: 58px;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-message-typing span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--bordeaux);
+  animation: chatTyping 900ms ease-in-out infinite;
+}
+
+.chat-message-typing span:nth-child(2) {
+  animation-delay: 120ms;
+}
+
+.chat-message-typing span:nth-child(3) {
+  animation-delay: 240ms;
 }
 
 .chat-form {
@@ -1526,6 +1562,19 @@ button {
   100% {
     transform: translate(-50%, 15px);
     opacity: 0;
+  }
+}
+
+@keyframes chatTyping {
+  0%,
+  60%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-3px);
   }
 }
 
