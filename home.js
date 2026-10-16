@@ -433,7 +433,7 @@ function renderTopics() {
 
   chatSuggestions.classList.remove("is-question-list");
   chatSuggestions.replaceChildren(
-    ...faqTopics.slice(0, 8).map((topic) =>
+    ...faqTopics.map((topic) =>
       createSuggestionButton(topic.label, "chatTopic", topic.label),
     ),
   );

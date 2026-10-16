@@ -885,7 +885,7 @@ button {
 }
 
 .reviews-viewport {
-  min-height: 190px;
+  min-height: 230px;
   position: relative;
   overflow: hidden;
 }
@@ -893,8 +893,10 @@ button {
 .review-card {
   position: absolute;
   inset: 0;
-  display: grid;
-  align-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
   padding: clamp(20px, 3vw, 32px);
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -912,11 +914,34 @@ button {
   transform: translateX(0);
 }
 
-.review-card p:last-child {
+.review-rating {
+  margin: 0;
+  color: var(--gold);
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.review-rating span + span {
+  margin-left: 10px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.review-quote {
   max-width: 720px;
   margin: 0;
   color: var(--muted);
   font-size: 1rem;
+  line-height: 1.5;
+}
+
+.review-author {
+  align-self: flex-end;
+  margin-top: auto;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-style: italic;
 }
 
 .round-control {
@@ -963,7 +988,7 @@ button {
   display: inline-flex;
   margin: 4px 0 18px;
   color: var(--bordeaux);
-  font-size: clamp(1.45rem, 2.1vw, 1.85rem);
+  font-size: 1.1rem;
   font-weight: 900;
   text-decoration: none;
 }
@@ -1004,7 +1029,12 @@ button {
 .contact-social-button.social-instagram {
   color: var(--bordeaux);
   background: var(--cream);
-  border-color: rgba(91, 36, 31, 0.28);
+  border-color: rgba(91, 36, 31, 0.24);
+}
+
+.contact-social-button.social-instagram svg {
+  width: 42px;
+  height: 42px;
 }
 
 .contact-social-button.social-instagram svg * {
@@ -1028,6 +1058,12 @@ button {
   color: var(--ink);
   background: var(--gold);
   border-color: var(--gold);
+}
+
+.contact-social-button.social-instagram:hover {
+  color: var(--red);
+  background: var(--cream);
+  border-color: rgba(143, 33, 27, 0.34);
 }
 
 .hours-placeholder {
@@ -1201,6 +1237,7 @@ button {
   height: 34px;
   display: inline-grid;
   place-items: center;
+  place-content: center;
   grid-template-columns: repeat(3, 5px);
   gap: 3px;
   border-radius: 50%;
@@ -1223,7 +1260,7 @@ button {
 .chat-panel {
   order: -1;
   width: min(390px, calc(100vw - 32px));
-  max-height: min(680px, calc(100vh - 44px));
+  max-height: min(780px, calc(100vh - 44px));
   display: grid;
   grid-template-rows: auto auto minmax(160px, 1fr) auto auto;
   overflow: hidden;
@@ -1350,17 +1387,23 @@ button {
 }
 
 .chat-suggestions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  max-height: 138px;
+  display: grid;
+  grid-template-columns: fit-content(100%);
+  align-content: start;
+  gap: 6px;
+  max-height: min(410px, 52vh);
   overflow-y: auto;
   padding: 0 18px 14px;
   background: #fffdf7;
 }
 
+.chat-suggestions.is-question-list {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .chat-suggestions button {
-  flex: 1 1 calc(50% - 4px);
+  min-width: 0;
+  width: 100%;
   min-height: 34px;
   padding: 8px 11px;
   border: 1px solid rgba(91, 36, 31, 0.2);
@@ -1372,10 +1415,6 @@ button {
   font-weight: 900;
   line-height: 1.25;
   text-align: left;
-}
-
-.chat-suggestions.is-question-list button {
-  flex-basis: 100%;
 }
 
 .chat-phone-link {
@@ -1643,10 +1682,6 @@ button {
 
   .drinks-showcase-content p {
     font-size: 2.85rem;
-  }
-
-  .phone-link {
-    font-size: 1.65rem;
   }
 
   .split-section,
@@ -1942,10 +1977,6 @@ button {
 
   .price-row strong {
     font-size: 1.05rem;
-  }
-
-  .phone-link {
-    font-size: 1.35rem;
   }
 
   .footer-inner {
